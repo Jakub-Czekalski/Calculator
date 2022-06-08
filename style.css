@@ -4,9 +4,101 @@
     --pink-orange: #f4a261;
 }
 
+.key-1 {
+    grid-area: one;
+}
+
+.key-2 {
+    grid-area: two;
+}
+
+.key-3 {
+    grid-area: three;
+}
+
+.key-4 {
+    grid-area: four;
+}
+
+.key-5 {
+    grid-area: five;
+}
+
+.key-6 {
+    grid-area: six;
+}
+
+.key-7 {
+    grid-area: seven;
+}
+
+.key-8 {
+    grid-area: eight;
+}
+
+.key-9 {
+    grid-area: nine;
+}
+
+.key-0 {
+    grid-area: null;
+}
+
+.key-plus {
+    grid-area: plus;
+}
+
+.key-minus {
+    grid-area: minus;
+}
+
+.key-equal {
+    grid-area: equal;
+}
+
+.key-multi {
+    grid-area: multi;
+}
+
+.key-division {
+    grid-area: division;
+}
+
+.key-dot {
+    grid-area: dot;
+}
+
+.key-negative {
+    grid-area: negative;
+}
+
+.key-backspace {
+    grid-area: BS;
+}
+
+.key-cancel {
+    grid-area: C;
+}
+
+.key-cancelError {
+    grid-area: CE;
+}
+
+.key-percent {
+    grid-area: percent;
+}
+
+.key-squere {
+    grid-area: squere;
+}
+
+
+
+
+
 body {
     align-items: center;
-    background: linear-gradient(to top right, var(--pink-orange), var(--brown-light));
+    background: linear-gradient(to bottom right, var(--brown-light) 5%, var(--pink-orange));
     display: flex;
     height: 100vh;
     justify-content: center;
@@ -15,28 +107,80 @@ body {
 
 .calculator__main {
     background: var(--pink-orange);
-    height: 300px;
-    width: 250px;
+    box-shadow: 8px 8px 21px 2px rgba(0, 0, 0, 0.5);
+    border: solid var(--brown-light) 8px;
+    border-radius: 20px;
+    opacity: 0.8;
 }
 
 .claculator__screen {
     background: var(--blue);
-    border-radius: 20px;
-    height: 30px;
-    width: 100%;
+    border-radius: 10px;
+    height: 50px;
+    margin: auto;
+    margin-top: 5px;
+    width: 95%;
 }
 
-.calculator__kayboard {
+
+.calculator__keyboard {
     display: grid;
-    grid-template: 1fr 1fr 1fr 1fr/ 1fr 1fr 1fr 1fr;
+    gap: 5px;
+    grid-auto-columns: 50px;
+    grid-auto-rows: 40px 40px 50px 50px 50px 50px;
+    grid-template-areas:
+        'C CE BS BS'
+        'percent squere division multi'
+        'seven eight nine minus'
+        'four five six plus'
+        'one two three equal'
+        'negative null dot equal';
     list-style-type: none;
     padding: 0;
-    margin: 0;
+    margin: 5px;
 }
 
-.button {
+.keyboard__button {
     background: var(--brown-light);
-    height: 50px;
-    width: 50px;
     border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.key-backspace{
+    position: relative;
+}
+
+.key-backspace::before{
+    border-bottom: 12px solid transparent;
+    border-top: 12px solid transparent;
+    border-right: 15px solid var(--blue);
+    content: " ";
+    display: inline-block;
+    position: absolute;
+    left: 26%;
+    top: 22%;
+}
+
+.key-backspace::after{
+    background: var(--blue);
+    border-radius: 0 2px 2px 0;
+    content: " ";
+    height: 13px;
+    left: 40%;
+    top: 36%;
+    position: absolute;
+    width: 30px;
+}
+
+.key {
+    background: none;
+    border: solid var(--blue) 1px;
+    border-radius: 15px;
+    color: var(--blue);
+    font-family: 'Lucida Sans';
+    font-size: 20px;
+    height: 98%;
+    width: 96%; 
 }
