@@ -102,6 +102,7 @@ body {
     display: flex;
     height: 100vh;
     justify-content: center;
+    min-height: 400px;
     width: 100vw;
 }
 
@@ -175,7 +176,8 @@ body {
     z-index: -1;
 }
 
-.key {
+.key ,
+.keyboard__numberKey {
     background: none;
     border: solid var(--blue) 1px;
     border-radius: 15px;
@@ -190,7 +192,8 @@ body {
 
 
 
-.keyboard__button::after {
+.keyboard__numberKey--border::after,
+.keyboard__symbolKey--border::after{
     border-right: 1px solid var(--blue);
     border-bottom: 1px solid var(--blue);
     border-top: 1px solid transparent;
@@ -205,7 +208,8 @@ body {
     z-index: -1;
 }
 
-.keyboard__button::before {
+.keyboard__numberKey--border::before,
+.keyboard__symbolKey--border::before{
     border-top: 1px solid var(--blue);
     border-left: 1px solid var(--blue);
     border-bottom: 1px solid transparent;
@@ -221,19 +225,24 @@ body {
 }
 
 
-.clickAnimation1::before,
-.clickAnimation1::after {
+.clickAnimationOne::before,
+.clickAnimationOne::after {
     animation: borderMoveOne 0.35s 2 alternate;
 }
 
-.clickAnimation2::before,
-.clickAnimation2::after {
+.clickAnimationTwo::before,
+.clickAnimationTwo::after {
     animation: borderMoveTwo 0.35s 2 alternate;
 }
 
-.clickAnimation3::before,
-.clickAnimation3::after {
+.clickAnimationThree::before,
+.clickAnimationThree::after {
     animation: borderMoveThree 0.35s 2 alternate;
+}
+
+.clickAnimationFour::before,
+.clickAnimationFour::after {
+    animation: borderMoveFour 0.35s 2 alternate;
 }
 
 @keyframes borderMoveOne {
@@ -257,6 +266,14 @@ body {
         border-radius: 12px 12px 12px 12px;
         height: 89%;
         width: 76.5%;
+    }
+}
+
+@keyframes borderMoveFour {
+    100% {
+        border-radius: 12px 12px 12px 12px;
+        height: 28px;
+        width: 38px;
     }
 }
 

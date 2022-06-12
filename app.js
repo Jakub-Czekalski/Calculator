@@ -1,34 +1,75 @@
-const NUMBERBUTTON = document.querySelectorAll('.calculator__keyboard li');
-const BACKSPACEBUTTON = document.querySelector('.key-backspace');
-const EQUALBUTTON = document.querySelector('.key-equal');
+const NUMBERBUTTON = document.querySelectorAll('.calculator__keyboard li button');
+const BACKSPACEBUTTON = document.querySelector('.key--backspace');
+const EQUALBUTTON = document.querySelector('.key--equal');
+const PLUSBUTTON = document.querySelector('.key--plus');
+const MINUSBUTTON = document.querySelector('.key--minus');
+const DOTBUTTON = document.querySelector('.key--dot');
+const NEGATIVEBUTTON = document.querySelector('.key--negative');
+const MULTIBUTTON = document.querySelector('.key--multi');
+const DIVISIONBUTTON = document.querySelector('.key--division');
+const PERCENTBUTTON = document.querySelector('.key--percent');
+const SQUEREBUTTON = document.querySelector('.key--squere');
+const CANCELBUTTON = document.querySelector('.key--cancel');
+const CANCELERRORBUTTON = document.querySelector('.key--cancelError');
 
-let keyNumber
+let addAnimationOne = (event) => {
+    event.target.classList.add('clickAnimationOne');
+    event.target.addEventListener('animationend', () => {
+        event.target.classList.remove('clickAnimationOne')
+    })
+};
 
-NUMBERBUTTON.forEach((index, buttonNumber) => {
-    
+let addAnimationTwo = (event) => {
+    event.target.classList.add('clickAnimationTwo');
+    event.target.addEventListener('animationend', () => {
+        event.target.classList.remove('clickAnimationTwo')
+    })
+};
+
+let addAnimationThree = (event) => {
+    event.target.classList.add('clickAnimationThree');
+    event.target.addEventListener('animationend', () => {
+        event.target.classList.remove('clickAnimationThree')
+    })
+};
+
+let addAnimationFour = (event) => { 
+    event.target.classList.add('clickAnimationFour');
+    event.target.addEventListener('animationend', () => {
+        event.target.classList.remove('clickAnimationFour')
+    })
+};
+
+
+
+NUMBERBUTTON.forEach((buttonNumber, index) => {
+
     const NRBUTTON = () => {
-    keyNumber = index;
-    let currentNumber = document.querySelector("key-" + keyNumber)
-    currentNumber.classList.add('clickAnimation1');
-    currentNumber.addEventListener('animationend', () => {
-        currentNumber.classList.remove('clickAnimation1')
-    })};
+        if (index < 10) {
+            let currentNumber = document.querySelector(".key--" + index);
+            currentNumber.classList.add('clickAnimationOne');
+            currentNumber.addEventListener('animationend', () => {
+                currentNumber.classList.remove('clickAnimationOne')
+            })
+        }
+    };
 
-    NUMBERBUTTON.addEventListener('click', NRBUTTON )
+    buttonNumber.addEventListener('click', NRBUTTON)
 });
 
-BACKSPACEBUTTON.addEventListener('click', () => {
 
-    BACKSPACEBUTTON.classList.add('clickAnimation2');
-    BACKSPACEBUTTON.addEventListener('animationend', () => {
-        BACKSPACEBUTTON.classList.remove('clickAnimation2')
-    })
-});
+PLUSBUTTON.addEventListener('click', addAnimationOne);
+MINUSBUTTON.addEventListener('click', addAnimationOne);
+NEGATIVEBUTTON.addEventListener('click', addAnimationOne);
+DOTBUTTON.addEventListener('click', addAnimationOne);
+BACKSPACEBUTTON.addEventListener('click', addAnimationTwo);
+EQUALBUTTON.addEventListener('click', addAnimationThree);
+MULTIBUTTON.addEventListener('click', addAnimationFour);
+DIVISIONBUTTON.addEventListener('click', addAnimationFour);
+SQUEREBUTTON.addEventListener('click', addAnimationFour);
+PERCENTBUTTON.addEventListener('click', addAnimationFour);
+CANCELBUTTON.addEventListener('click', addAnimationFour);
+CANCELERRORBUTTON.addEventListener('click', addAnimationFour);
 
-EQUALBUTTON.addEventListener('click', () => {
 
-    EQUALBUTTON.classList.add('clickAnimation3');
-    EQUALBUTTON.addEventListener('animationend', () => {
-        EQUALBUTTON.classList.remove('clickAnimation3')
-    })
-});
+
