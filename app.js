@@ -1,16 +1,16 @@
 const NUMBERBUTTON = document.querySelectorAll('.calculator__keyboard li button');
-const BACKSPACEBUTTON = document.querySelector('.key--backspace');
-const EQUALBUTTON = document.querySelector('.key--equal');
-const PLUSBUTTON = document.querySelector('.key--plus');
-const MINUSBUTTON = document.querySelector('.key--minus');
-const DOTBUTTON = document.querySelector('.key--dot');
-const NEGATIVEBUTTON = document.querySelector('.key--negative');
-const MULTIBUTTON = document.querySelector('.key--multi');
-const DIVISIONBUTTON = document.querySelector('.key--division');
-const PERCENTBUTTON = document.querySelector('.key--percent');
-const SQUEREBUTTON = document.querySelector('.key--squere');
-const CANCELBUTTON = document.querySelector('.key--cancel');
-const CANCELERRORBUTTON = document.querySelector('.key--cancelError');
+const BACKSPACEBUTTON = document.querySelector('.key-backspace');
+const EQUALBUTTON = document.querySelector('.key-equal');
+const PLUSBUTTON = document.querySelector('.key-plus');
+const MINUSBUTTON = document.querySelector('.key-minus');
+const DOTBUTTON = document.querySelector('.key-dot');
+const NEGATIVEBUTTON = document.querySelector('.key-negative');
+const MULTIBUTTON = document.querySelector('.key-multi');
+const DIVISIONBUTTON = document.querySelector('.key-division');
+const PERCENTBUTTON = document.querySelector('.key-percent');
+const SQUEREBUTTON = document.querySelector('.key-squere');
+const CANCELBUTTON = document.querySelector('.key-cancel',);
+const CANCELERRORBUTTON = document.querySelector('.key-cancelError');
 
 let addAnimationOne = (event) => {
     event.target.classList.add('clickAnimationOne');
@@ -46,7 +46,7 @@ NUMBERBUTTON.forEach((buttonNumber, index) => {
 
     const NRBUTTON = () => {
         if (index < 10) {
-            let currentNumber = document.querySelector(".key--" + index);
+            let currentNumber = document.querySelector(".key-" + index);
             currentNumber.classList.add('clickAnimationOne');
             currentNumber.addEventListener('animationend', () => {
                 currentNumber.classList.remove('clickAnimationOne')

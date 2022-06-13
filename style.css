@@ -4,102 +4,94 @@
     --pink-orange: #f4a261;
 }
 
-.key-1 {
+.button-1 {
     grid-area: one;
 }
-
-.key-2 {
+.button-2 {
     grid-area: two;
 }
-
-.key-3 {
+.button-3 {
     grid-area: three;
 }
-
-.key-4 {
+.button-4 {
     grid-area: four;
 }
-
-.key-5 {
+.button-5 {
     grid-area: five;
 }
-
-.key-6 {
+.button-6 {
     grid-area: six;
 }
-
-.key-7 {
+.button-7 {
     grid-area: seven;
 }
 
-.key-8 {
+.button-8 {
     grid-area: eight;
 }
 
-.key-9 {
+.button-9 {
     grid-area: nine;
 }
 
-.key-0 {
+.button-0 {
     grid-area: null;
 }
 
-.key-plus {
+.button-plus {
     grid-area: plus;
 }
 
-.key-minus {
+.button-minus {
     grid-area: minus;
 }
 
-.key-equal {
+.button-equal {
     grid-area: equal;
 }
 
-.key-multi {
+.button-multi {
     grid-area: multi;
 }
 
-.key-division {
+.button-division {
     grid-area: division;
 }
 
-.key-dot {
+.button-dot {
     grid-area: dot;
 }
 
-.key-negative {
+.button-negative {
     grid-area: negative;
 }
 
-.key-backspace {
+.button-backspace {
     grid-area: BS;
 }
 
-.key-cancel {
+.button-cancel {
     grid-area: C;
 }
 
-.key-cancelError {
+.button-cancelError {
     grid-area: CE;
 }
 
-.key-percent {
+.button-percent {
     grid-area: percent;
 }
 
-.key-squere {
+.button-squere {
     grid-area: squere;
 }
-
-
-
 
 
 body {
     align-items: center;
     background: linear-gradient(to bottom right, var(--brown-light) 5%, var(--pink-orange));
     display: flex;
+    font-family: 'Lucida Sans';
     height: 100vh;
     justify-content: center;
     min-height: 400px;
@@ -108,21 +100,21 @@ body {
 
 .calculator__main {
     background: var(--pink-orange);
-    box-shadow: 8px 8px 21px 2px rgba(0, 0, 0, 0.5);
     border: solid var(--brown-light) 8px;
     border-radius: 20px;
+    box-shadow: 8px 8px 21px 2px rgba(0, 0, 0, 0.5);
     opacity: 0.8;
 }
 
 .claculator__screen {
     background: var(--blue);
     border-radius: 10px;
-    height: 50px;
-    margin: auto;
-    margin-top: 5px;
-    width: 95%;
+    color: #E9C46A;
+    font-size: 30px;
+    text-align: end;
+    padding: 12px 10px;
+    margin: 5px;
 }
-
 
 .calculator__keyboard {
     display: grid;
@@ -141,7 +133,7 @@ body {
     margin: 5px;
 }
 
-.keyboard__button {
+.keyboard {
     align-items: center;
     background: var(--brown-light);
     border-radius: 15px;
@@ -151,79 +143,92 @@ body {
     isolation: isolate;
 }
 
-
-.buttonLabel::before {
-    border-bottom: 12px solid transparent;
-    border-top: 12px solid transparent;
-    border-right: 15px solid var(--blue);
-    content: " ";
-    display: inline-block;
-    position: absolute;
-    left: 26%;
-    top: 22%;
-    z-index: -1;
-}
-
-.buttonLabel::after {
-    background: var(--blue);
-    border-radius: 0 2px 2px 0;
-    content: " ";
-    height: 13px;
-    left: 40%;
-    top: 36%;
-    position: absolute;
-    width: 30px;
-    z-index: -1;
-}
-
-.key ,
-.keyboard__numberKey {
+.keyboard__symbol ,
+.keyboard__number {
     background: none;
     border: solid var(--blue) 1px;
     border-radius: 15px;
     color: var(--blue);
-    cursor: pointer;
-    font-family: 'Lucida Sans';
     font-size: 20px;
     height: 95%;
-    transition: opacity 0.2s;
     width: 95%;
 }
 
+.key-backspace {
+    width: 98%;
+}
 
+.key-equal {
+    height: 98%;
+}
 
-.keyboard__numberKey--border::after,
-.keyboard__symbolKey--border::after{
+.key__backspace--label::after,
+.key__backspace--label::before{
+    content: " ";
+    position: absolute;
+    z-index: -1;
+    display: inline-block;
+}
+
+.key__backspace--label::before {
+    border-bottom: 12px solid transparent;
+    border-top: 12px solid transparent;
+    border-right: 15px solid var(--blue);
+    left: 26%;
+    top: 20%;
+}
+
+.key__backspace--label::after {
+    background: var(--blue);
+    border-radius: 0 2px 2px 0;
+    height: 13px;
+    left: 40%;
+    top: 34%;
+    width: 30px;
+}
+
+.keyboard__number--border::before,
+.keyboard__symbol--border::before,
+.keyboard__number--border::after,
+.keyboard__symbol--border::after {
+    content: "";
+    height: 16px;
+    position: absolute;
+    transition: width 0.2s, height 0.2s;
+    width: 16px;
+    z-index: -1;
+}
+
+.keyboard__number--border::after,
+.keyboard__symbol--border::after{
     border-right: 1px solid var(--blue);
     border-bottom: 1px solid var(--blue);
     border-top: 1px solid transparent;
     border-left: 1px solid transparent;
     border-radius: 0 0 12px 0;
-    content: "";
-    height: 16px;
-    width: 16px;
     right: 5px;
     bottom: 5px;
-    position: absolute;
-    z-index: -1;
 }
 
-.keyboard__numberKey--border::before,
-.keyboard__symbolKey--border::before{
+.keyboard__number--border::before,
+.keyboard__symbol--border::before{
+    border-bottom: 1px solid transparent;
     border-top: 1px solid var(--blue);
     border-left: 1px solid var(--blue);
-    border-bottom: 1px solid transparent;
     border-right: 1px solid transparent;
     border-radius: 12px 0 0 0;
-    content: "";
-    height: 16px;
-    width: 16px;
     left: 5px;
     top: 5px;
-    position: absolute;
-    z-index: -1;
 }
 
+
+.keyboard__number--border:hover::before,
+.keyboard__symbol--border:hover::before,
+.keyboard__number--border:hover::after,
+.keyboard__symbol--border:hover::after{
+    height: 50%;
+    width: 50%;
+}
 
 .clickAnimationOne::before,
 .clickAnimationOne::after {
@@ -275,17 +280,4 @@ body {
         height: 28px;
         width: 38px;
     }
-}
-
-.key--backspace {
-    width: 98%;
-}
-
-.key--equal {
-    height: 98%;
-    width: 95%;
-}
-
-.key--small {
-    height: 95%;
 }
