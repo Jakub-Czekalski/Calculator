@@ -9,8 +9,10 @@ const MULTIBUTTON = document.querySelector('.key-multi');
 const DIVISIONBUTTON = document.querySelector('.key-division');
 const PERCENTBUTTON = document.querySelector('.key-percent');
 const SQUEREBUTTON = document.querySelector('.key-squere');
-const CANCELBUTTON = document.querySelector('.key-cancel',);
+const CANCELBUTTON = document.querySelector('.key-cancel', );
 const CANCELERRORBUTTON = document.querySelector('.key-cancelError');
+const SCREEN = document.querySelector('.claculator__screen');
+const KEYS = document.querySelector('.calculator__keyboard')
 
 let addAnimationOne = (event) => {
     event.target.classList.add('clickAnimationOne');
@@ -33,7 +35,7 @@ let addAnimationThree = (event) => {
     })
 };
 
-let addAnimationFour = (event) => { 
+let addAnimationFour = (event) => {
     event.target.classList.add('clickAnimationFour');
     event.target.addEventListener('animationend', () => {
         event.target.classList.remove('clickAnimationFour')
@@ -44,7 +46,7 @@ let addAnimationFour = (event) => {
 
 NUMBERBUTTON.forEach((buttonNumber, index) => {
 
-    const NRBUTTON = () => {
+    const NRBUTTON = (event) => {
         if (index < 10) {
             let currentNumber = document.querySelector(".key-" + index);
             currentNumber.classList.add('clickAnimationOne');
@@ -71,5 +73,11 @@ PERCENTBUTTON.addEventListener('click', addAnimationFour);
 CANCELBUTTON.addEventListener('click', addAnimationFour);
 CANCELERRORBUTTON.addEventListener('click', addAnimationFour);
 
-
-
+KEYS.addEventListener('click', (event) => {
+    if (!event.target.closest('button')) return;
+    
+    const KEY = event.target;
+    const KEYVALUE = KEY.textContent;
+    const DISPLAYVALUE = SCREEN.textContent;
+    
+});
