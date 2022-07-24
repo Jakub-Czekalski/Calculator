@@ -208,6 +208,7 @@ body {
     border-radius: 0 0 12px 0;
     right: 5px;
     bottom: 5px;
+    transition: width 0.35s, height 0.35s;
 }
 
 .keyboard__number--border::before,

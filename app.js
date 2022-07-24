@@ -11,8 +11,6 @@ const PERCENTBUTTON = document.querySelector('.key-percent');
 const SQUEREBUTTON = document.querySelector('.key-squere');
 const CANCELBUTTON = document.querySelector('.key-cancel', );
 const CANCELERRORBUTTON = document.querySelector('.key-cancelError');
-const SCREEN = document.querySelector('.claculator__screen');
-const KEYS = document.querySelector('.calculator__keyboard')
 
 let addAnimationOne = (event) => {
     event.target.classList.add('clickAnimationOne');
@@ -73,11 +71,34 @@ PERCENTBUTTON.addEventListener('click', addAnimationFour);
 CANCELBUTTON.addEventListener('click', addAnimationFour);
 CANCELERRORBUTTON.addEventListener('click', addAnimationFour);
 
+// Calculator 
+
+const CALCULATOR = document.querySelector('.calculator__main');
+const SCREEN = CALCULATOR.querySelector('.claculator__screen');
+const KEYS = CALCULATOR.querySelector('.calculator__keyboard');
+
 KEYS.addEventListener('click', (event) => {
     if (!event.target.closest('button')) return;
     
     const KEY = event.target;
     const KEYVALUE = KEY.textContent;
     const DISPLAYVALUE = SCREEN.textContent;
-    
+   
+    // number key
+
+    if(KEY.classList.contains('keyboard__number')){
+    if (SCREEN.textContent === '0') {
+        SCREEN.textContent = KEYVALUE
+    } else {
+        SCREEN.textContent = DISPLAYVALUE + KEYVALUE
+    }        
+    };
+
+    // operator key
+
+    if(KEY.classList.contains('keyboard__symbol')){
+        console.log(event.target);
+        CALCULATOR.dataset.previusKeyType = 'operator'
+    }
+
 });
