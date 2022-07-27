@@ -9,7 +9,7 @@ const MULTIBUTTON = document.querySelector('.key-multi');
 const DIVISIONBUTTON = document.querySelector('.key-division');
 const PERCENTBUTTON = document.querySelector('.key-percent');
 const SQUEREBUTTON = document.querySelector('.key-squere');
-const CANCELBUTTON = document.querySelector('.key-cancel', );
+const CANCELBUTTON = document.querySelector('.key-clear', );
 const CANCELERRORBUTTON = document.querySelector('.key-cancelError');
 
 let addAnimationOne = (event) => {
@@ -79,26 +79,61 @@ const KEYS = CALCULATOR.querySelector('.calculator__keyboard');
 
 KEYS.addEventListener('click', (event) => {
     if (!event.target.closest('button')) return;
-    
+
     const KEY = event.target;
     const KEYVALUE = KEY.textContent;
     const DISPLAYVALUE = SCREEN.textContent;
-   
+    const { type } = KEY.dataset
+    const { previusKeyType } = CALCULATOR.dataset
+    const {key} = KEY.dataset
+
     // number key
 
-    if(KEY.classList.contains('keyboard__number')){
-    if (SCREEN.textContent === '0') {
-        SCREEN.textContent = KEYVALUE
-    } else {
-        SCREEN.textContent = DISPLAYVALUE + KEYVALUE
-    }        
+    if (type === 'number') {
+        if (DISPLAYVALUE === '0') {
+            SCREEN.textContent = KEYVALUE
+        } else if (previusKeyType === 'operator' ) {
+            SCREEN.textContent = KEYVALUE
+        } else {
+            SCREEN.textContent = DISPLAYVALUE + KEYVALUE
+        }
+        CALCULATOR.dataset.previusKeyType = type
     };
 
     // operator key
 
-    if(KEY.classList.contains('keyboard__symbol')){
-        console.log(event.target);
-        CALCULATOR.dataset.previusKeyType = 'operator'
-    }
+    if (type === 'operator') {
+        CALCULATOR.dataset.previusKeyType = type;
+
+        CALCULATOR.dataset.firstNumber = DISPLAYVALUE;
+        CALCULATOR.dataset.operator = key
+    };
+
+    // clear button
+
+    if (type === 'clear') {
+        SCREEN.textContent = '0';
+        
+        if (SCREEN.textContent === '0') {
+                    CALCULATOR.dataset.firstNumber = '0';
+    }};
+
+    // equal solution
+
+    if (type === 'equal') {
+        const FIRSTNUMBER = parseInt(CALCULATOR.dataset.firstNumber);
+        const OPERATOR = CALCULATOR.dataset.operator;
+        const SECONDNUMBER = parseInt(DISPLAYVALUE);
+
+        let result = '';
+
+        if (OPERATOR === 'plus') {result = FIRSTNUMBER + SECONDNUMBER};
+        if (OPERATOR === 'minus') {result = FIRSTNUMBER - SECONDNUMBER};
+        if (OPERATOR === 'multi') {result = FIRSTNUMBER * SECONDNUMBER};
+        if (OPERATOR === 'division') {result = FIRSTNUMBER / SECONDNUMBER};
+
+        SCREEN.textContent = result;
+        console.log(FIRSTNUMBER, OPERATOR, SECONDNUMBER)
+    };
 
 });
