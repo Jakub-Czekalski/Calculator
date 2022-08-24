@@ -11,6 +11,7 @@ const PERCENTBUTTON = document.querySelector('.key-percent');
 const SQUEREBUTTON = document.querySelector('.key-squere');
 const CANCELBUTTON = document.querySelector('.key-clear', );
 const CANCELERRORBUTTON = document.querySelector('.key-cancelError');
+const CALCULATOR = document.querySelector('.calculator__main');
 
 let addAnimationOne = (event) => {
     event.target.classList.add('clickAnimationOne');
@@ -52,6 +53,7 @@ NUMBERBUTTON.forEach((buttonNumber, index) => {
                 currentNumber.classList.remove('clickAnimationOne')
             })
         }
+        CALCULATOR.dataset.lastNumber = index;
     };
 
     buttonNumber.addEventListener('click', NRBUTTON)
@@ -73,7 +75,7 @@ CANCELERRORBUTTON.addEventListener('click', addAnimationFour);
 
 // Calculator 
 
-const CALCULATOR = document.querySelector('.calculator__main');
+
 const SCREEN = CALCULATOR.querySelector('.claculator__screen');
 const KEYS = CALCULATOR.querySelector('.calculator__keyboard');
 
@@ -83,21 +85,31 @@ KEYS.addEventListener('click', (event) => {
     const KEY = event.target;
     const KEYVALUE = KEY.textContent;
     const DISPLAYVALUE = SCREEN.textContent;
-    const { type } = KEY.dataset
-    const { previusKeyType } = CALCULATOR.dataset
-    const {key} = KEY.dataset
+    const {
+        type
+    } = KEY.dataset;
+    const {
+        previusKeyType
+    } = CALCULATOR.dataset;
+    const {
+        key
+    } = KEY.dataset;
+    const {
+        lastNumber
+    } = CALCULATOR.dataset;
+
 
     // number key
 
     if (type === 'number') {
         if (DISPLAYVALUE === '0') {
             SCREEN.textContent = KEYVALUE
-        } else if (previusKeyType === 'operator' ) {
+        } else if (previusKeyType === 'operator') {
             SCREEN.textContent = KEYVALUE
         } else {
-            SCREEN.textContent = DISPLAYVALUE + KEYVALUE
+            SCREEN.textContent = DISPLAYVALUE + KEYVALUE;
         }
-        CALCULATOR.dataset.previusKeyType = type
+        CALCULATOR.dataset.previusKeyType = type;
     };
 
     // operator key
@@ -113,10 +125,17 @@ KEYS.addEventListener('click', (event) => {
 
     if (type === 'clear') {
         SCREEN.textContent = '0';
-        
+
         if (SCREEN.textContent === '0') {
-                    CALCULATOR.dataset.firstNumber = '0';
-    }};
+            CALCULATOR.dataset.firstNumber = '0';
+        }
+    };
+
+    // clear error button
+
+    if (type === 'clear-error') {
+        SCREEN.textContent = '0';
+    }
 
     // equal solution
 
@@ -127,13 +146,37 @@ KEYS.addEventListener('click', (event) => {
 
         let result = '';
 
-        if (OPERATOR === 'plus') {result = FIRSTNUMBER + SECONDNUMBER};
-        if (OPERATOR === 'minus') {result = FIRSTNUMBER - SECONDNUMBER};
-        if (OPERATOR === 'multi') {result = FIRSTNUMBER * SECONDNUMBER};
-        if (OPERATOR === 'division') {result = FIRSTNUMBER / SECONDNUMBER};
+        if (OPERATOR === 'plus') {
+            result = FIRSTNUMBER + SECONDNUMBER
+        };
+        if (OPERATOR === 'minus') {
+            result = FIRSTNUMBER - SECONDNUMBER
+        };
+        if (OPERATOR === 'multi') {
+            result = FIRSTNUMBER * SECONDNUMBER
+        };
+        if (OPERATOR === 'division') {
+            result = FIRSTNUMBER / SECONDNUMBER
+        };
 
         SCREEN.textContent = result;
+        CALCULATOR.dataset.previusKeyType = type;
         console.log(FIRSTNUMBER, OPERATOR, SECONDNUMBER)
+    };
+
+    // backspace key
+
+    if (type === 'backspace') {
+        if (SCREEN.textContent.length > 1) {
+            let lastNumber = SCREEN.textContent.slice(0, -1);
+            SCREEN.textContent = lastNumber
+        } else {
+            SCREEN.textContent = 0;
+        };
+
+        if (previusKeyType === 'equal') {
+            SCREEN.textContent = DISPLAYVALUE
+        };
     };
 
 });
