@@ -53,7 +53,6 @@ NUMBERBUTTON.forEach((buttonNumber, index) => {
                 currentNumber.classList.remove('clickAnimationOne')
             })
         }
-        CALCULATOR.dataset.lastNumber = index;
     };
 
     buttonNumber.addEventListener('click', NRBUTTON)
@@ -79,6 +78,7 @@ CANCELERRORBUTTON.addEventListener('click', addAnimationFour);
 const SCREEN = CALCULATOR.querySelector('.claculator__screen');
 const KEYS = CALCULATOR.querySelector('.calculator__keyboard');
 
+
 KEYS.addEventListener('click', (event) => {
     if (!event.target.closest('button')) return;
 
@@ -94,10 +94,6 @@ KEYS.addEventListener('click', (event) => {
     const {
         key
     } = KEY.dataset;
-    const {
-        lastNumber
-    } = CALCULATOR.dataset;
-
 
     // number key
 
@@ -108,17 +104,23 @@ KEYS.addEventListener('click', (event) => {
             SCREEN.textContent = KEYVALUE
         } else {
             SCREEN.textContent = DISPLAYVALUE + KEYVALUE;
-        }
+        };
+        
         CALCULATOR.dataset.previusKeyType = type;
+        
+        if (previusKeyType === 'percent') {
+            SCREEN.textContent = DISPLAYVALUE;
+            CALCULATOR.dataset.previusKeyType = 'percent';
+        }
     };
 
     // operator key
 
     if (type === 'operator') {
         CALCULATOR.dataset.previusKeyType = type;
-
         CALCULATOR.dataset.firstNumber = DISPLAYVALUE;
         CALCULATOR.dataset.operator = key
+
     };
 
     // clear button
@@ -140,9 +142,9 @@ KEYS.addEventListener('click', (event) => {
     // equal solution
 
     if (type === 'equal') {
-        const FIRSTNUMBER = parseInt(CALCULATOR.dataset.firstNumber);
+        const FIRSTNUMBER = parseFloat(CALCULATOR.dataset.firstNumber);
         const OPERATOR = CALCULATOR.dataset.operator;
-        const SECONDNUMBER = parseInt(DISPLAYVALUE);
+        const SECONDNUMBER = parseFloat(DISPLAYVALUE);
 
         let result = '';
 
@@ -178,5 +180,33 @@ KEYS.addEventListener('click', (event) => {
             SCREEN.textContent = DISPLAYVALUE
         };
     };
+
+    // dot key
+    if (type === 'dot') {
+        if (SCREEN.textContent.includes('.')) {
+            SCREEN.textContent = DISPLAYVALUE;
+        } else if (DISPLAYVALUE === '0' || previusKeyType === 'number') {
+            SCREEN.textContent = DISPLAYVALUE + KEYVALUE;
+        }
+    };
+
+    // negative key
+    if (type === 'negative') {
+        SCREEN.textContent = DISPLAYVALUE * -1
+    };
+
+    // // percent key
+    // if (type === 'percent') {
+    //     SCREEN.textContent = DISPLAYVALUE / 100;
+    //     CALCULATOR.dataset.previusKeyType = type;
+    // } else if (OPERATOR === 'minus'||'plus') {
+    //     SCREEN.textContent = 
+    // }
+
+    // squere key
+    if (type === 'squere') {
+        SCREEN.textContent = Math.pow(parseFloat(DISPLAYVALUE),2);
+    }
+
 
 });
