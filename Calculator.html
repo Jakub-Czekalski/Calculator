@@ -10,7 +10,12 @@
 </head>
 
 <body>
-
+    <div class="nightmode_container">
+        <div class="nightmode-button">
+            <div><img src="icons/Sun.png" alt="sun-icon"></div>
+            <div class="inactive"><img src="icons/Moon.png" alt="moon-icon"></div>
+        </div>
+    </div>
     <div class="calculator__main">
         <div class="claculator__screen">0</div>
         <ul class="calculator__keyboard">
@@ -29,18 +34,19 @@
             <li class="keyboard button-multi" ><button class="keyboard__symbol keyboard__symbol--border key-multi" data-type="operator" data-key="multi">&times;</button></li>
             <li class="keyboard button-division" ><button class="keyboard__symbol keyboard__symbol--border key-division" data-type="operator" data-key="division">&divide;</button></li>
             <li class="keyboard button-equal"><button class="keyboard__symbol keyboard__symbol--border key-equal" data-type="equal">&equals;</button></li>
-            <li class="keyboard button-dot"><button class="keyboard__symbol keyboard__symbol--border key-dot">.</button></li>
-            <li class="keyboard button-negative"><button class="keyboard__symbol keyboard__symbol--border key-negative">+/-</button></li>
+            <li class="keyboard button-dot"><button class="keyboard__symbol keyboard__symbol--border key-dot" data-type="dot">.</button></li>
+            <li class="keyboard button-negative"><button class="keyboard__symbol keyboard__symbol--border key-negative" data-type="negative">+/-</button></li>
             <li class="keyboard button-backspace">
                 <label class="key__backspace--label" for="backspace"></label>
                 <button class="keyboard__symbol keyboard__symbol--border key-backspace" name="backspace" id="backspace" data-type="backspace"></button>
             </li>
             <li class="keyboard button-clear"><button class="keyboard__symbol keyboard__symbol--border key-clear" data-type="clear">C</button></li>
             <li class="keyboard button-cancelError"><button class="keyboard__symbol keyboard__symbol--border key-cancelError" data-type="clear-error">CE</button></li>
-            <li class="keyboard button-percent"><button class="keyboard__symbol keyboard__symbol--border key-percent">&percnt;</button></li>
-            <li class="keyboard button-squere"><button class="keyboard__symbol keyboard__symbol--border key-squere">x<sup>2</sup></button></li>
+            <li class="keyboard button-percent"><button class="keyboard__symbol keyboard__symbol--border key-percent" data-type="percent">&percnt;</button></li>
+            <li class="keyboard button-squere"><button class="keyboard__symbol keyboard__symbol--border key-squere" data-type="squere">x<sup>2</sup></button></li>
         </ul>
     </div>
+            
     <script src="app.js"></script>
 </body>
 

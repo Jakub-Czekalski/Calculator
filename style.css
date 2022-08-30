@@ -7,21 +7,27 @@
 .button-1 {
     grid-area: one;
 }
+
 .button-2 {
     grid-area: two;
 }
+
 .button-3 {
     grid-area: three;
 }
+
 .button-4 {
     grid-area: four;
 }
+
 .button-5 {
     grid-area: five;
 }
+
 .button-6 {
     grid-area: six;
 }
+
 .button-7 {
     grid-area: seven;
 }
@@ -92,10 +98,12 @@ body {
     background: linear-gradient(to bottom right, var(--brown-light) 5%, var(--pink-orange));
     display: flex;
     font-family: 'Lucida Sans';
+    flex-direction: column;
     height: 100vh;
     justify-content: center;
     min-height: 400px;
     width: 100vw;
+    overflow: hidden;
 }
 
 .calculator__main {
@@ -143,7 +151,7 @@ body {
     isolation: isolate;
 }
 
-.keyboard__symbol ,
+.keyboard__symbol,
 .keyboard__number {
     background: none;
     border: solid var(--blue) 1px;
@@ -152,6 +160,11 @@ body {
     font-size: 20px;
     height: 95%;
     width: 95%;
+}
+
+sup {
+    position: relative;
+    z-index: -1;
 }
 
 .key-backspace {
@@ -163,7 +176,7 @@ body {
 }
 
 .key__backspace--label::after,
-.key__backspace--label::before{
+.key__backspace--label::before {
     content: " ";
     position: absolute;
     z-index: -1;
@@ -200,7 +213,7 @@ body {
 }
 
 .keyboard__number--border::after,
-.keyboard__symbol--border::after{
+.keyboard__symbol--border::after {
     border-right: 1px solid var(--blue);
     border-bottom: 1px solid var(--blue);
     border-top: 1px solid transparent;
@@ -212,7 +225,7 @@ body {
 }
 
 .keyboard__number--border::before,
-.keyboard__symbol--border::before{
+.keyboard__symbol--border::before {
     border-bottom: 1px solid transparent;
     border-top: 1px solid var(--blue);
     border-left: 1px solid var(--blue);
@@ -226,7 +239,7 @@ body {
 .keyboard__number--border:hover::before,
 .keyboard__symbol--border:hover::before,
 .keyboard__number--border:hover::after,
-.keyboard__symbol--border:hover::after{
+.keyboard__symbol--border:hover::after {
     height: 50%;
     width: 50%;
 }
@@ -281,4 +294,39 @@ body {
         height: 28px;
         width: 38px;
     }
+}
+
+/* Night mode */
+.nightmode_container {
+    display: flex;
+    height: 22px;
+    width: 210px;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.nightmode-button {
+    background-color: var(--blue);
+    border-radius: 4px 4px 0 0;
+    display: flex;
+    height: 10px; 
+    width: 25px;
+    transition: height 0.2s;
+}
+
+.nightmode-button:hover {
+    height: 18px;
+}
+
+img {
+    height: 16px;
+    left: 50%;
+    position: relative;
+    top: 1.5px;
+    transform: translateX(-25%);
+    width: 16px;
+}
+
+.inactive {
+    display: none;
 }
